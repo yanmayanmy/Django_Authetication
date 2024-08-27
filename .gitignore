@@ -1,4 +1,4 @@
-migrate
+migrations
 *.pyc
 ./project/__pycache__
 db.sqlite3
