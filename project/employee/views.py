@@ -5,15 +5,17 @@ from django.contrib.auth import authenticate, login, logout
 # Create your views here.
 def signin(request):
     if request.method == "GET":
-        return render(request, 'accounts/login.html')
+        return render(request, 'employee/login.html')
     user = None
     if request.method == "POST":
-        member_id = request.POST['member_id']
+        e_id = request.POST['e_id']
         password = request.POST['password']
-        user = authenticate(request, username=member_id, password=password)
+        user = authenticate(request, username=e_id, password=password)
 
     if user is not None:
         login(request, user)
-        return render(request, 'accounts/login_success.html')
+        return render(request, 'employee/login_success.html')
     else:
-        return render(request, 'accounts/login.html', {'error_message': 'login failed'})
+        print(user.is_staff)
+        print(user.is_active)
+        return render(request, 'employee/login.html', {'error_message': 'login failed'})
