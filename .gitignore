@@ -1,2 +1,3 @@
 migrate
-.pyc
+*.pyc
+./project/__pycache__
